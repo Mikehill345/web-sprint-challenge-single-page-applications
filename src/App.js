@@ -16,6 +16,7 @@ const initialFormValues = {
   pineapple: false,
   ham: false,
   special: '',
+  name: '',
 }
 
 const initialFormErrors = {
@@ -23,6 +24,7 @@ const initialFormErrors = {
   sauce: '',
   toppings: '',
   special: '',
+  name: '',
 }
 
 const initialorder = []
@@ -54,12 +56,14 @@ export default function App(){
       size: formValues.size,
       sauce: formValues.sauce,
       toppings: [ 
+        'cheese',
         'pepperoni',
         'mushroom',
         'sasuage',
         'pineapple',
         'ham'].filter(topping => formValues[topping]),
       special: formValues.special.trim(),
+      name: formValues.name.trim(),
     }
     setOrder([...order, newOrder])
     setFormValues(initialFormValues)
@@ -74,9 +78,9 @@ console.log(order)
   return (
     <>
       <h1>Lambda Eats</h1>
-      {/* <img src='/pizza/Assets/Pizza.jpg' /> */}
+      <img src='/Assets/Pizza.jpg' alt="pizza"></img>
       <Link to={'/'}>Home</Link>
-      <Link to={'/pizza'}>Order a pizza!</Link>
+      <Link to={'/pizza'} id='form-page'>Order a pizza!</Link>
 
       <Switch>
         <Route path='/pizza'>

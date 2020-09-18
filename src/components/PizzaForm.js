@@ -3,7 +3,7 @@ import Order from './Order'
 
 export default function PizzaForm(props) {
     const { values, change, submit, disabled, errors, order } = props
-console.log(order)
+
     const onChange = evt => {
         const { name, value, type, checked } = evt.target
         const valueToUse = type === 'checkbox' ? checked : value
@@ -16,17 +16,24 @@ console.log(order)
     }
 
 
-
     return (
         <div>
             <div className='form-header'>
                 <h1>Pizza Maker !</h1>
-                {/* <img src='/pizza/Assets/Pizza.jpg' /> */}
+                <label>name
+          <input
+                                value={values.name}
+                                onChange={onChange}
+                                name="name"
+                                type="text"
+                                className='name'
+                            />
+                        </label>
             </div>
             <div className='form-container'>
                 <form onSubmit={onSubmit}>
                     <label>Pizza Size
-          <select name='size' value={values.size} onChange={onChange}>
+          <select name='size' className='size' value={values.size} onChange={onChange}>
                             <option value="">-- select --</option>
                             <option value="Small">Small</option>
                             <option value="Medium">Medium</option>
@@ -124,21 +131,25 @@ console.log(order)
                         </label>
                     </div>
                     <div>
-                        <label>Special Instructions
+                        <label>special
           <input
                                 value={values.special}
                                 onChange={onChange}
                                 name='special'
                                 type='text'
+                                className='special'
                             />
                         </label>
+                    <div>
+                        </div>
                     </div>
-                    <button disabled= {disabled}>submit</button>
+                    <button disabled= {disabled} id='submitBtn'>submit</button>
                     <div className='errors'>
                         <div>{errors.size}</div>
                         <div>{errors.sauce}</div>
                         <div>{errors.toppings}</div>
                         <div>{errors.special}</div>
+                        <div>{errors.name}</div>
                     </div>
                     <div>
                     {
